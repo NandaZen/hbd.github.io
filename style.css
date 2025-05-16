@@ -1,0 +1,383 @@
+body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background: rgb(0, 0, 0);
+}
+
+.content{
+    padding-top: 100px;
+    transform: scale(1.5);
+    transform-origin: center bottom;
+}
+
+canvas{
+    display:block;
+    padding-top: 100px;
+    height: 450px;
+    width: 100%;
+}
+h1 {
+  position: absolute;
+  top: 20%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: #fff;
+  font-family: "Source Sans Pro";
+  font-size: 5em;
+  font-weight: 900;
+  -webkit-user-select: none;
+  user-select: none;
+}
+
+.cake-wrapper {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.cake {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-end;
+    z-index: 1;
+}
+
+.candle {
+  position: absolute;  /* supaya lilin posisinya relatif ke .cake-wrapper */
+  top: -40px;          /* letakkan lilin di atas kue */
+  left: 49%;
+  transform: translateX(-50%);
+  animation: fall-candle 0.6s ease forwards;
+  animation-delay: 1.3s;
+  width: 10px;
+  height: 40px;
+  background: #fff;
+  z-index: 2;
+}
+
+@keyframes fall {
+  0% {
+    transform: translateY(-300px);
+    animation-timing-function: ease-in;
+  }
+  70% {
+    transform: translateY(10px);
+    animation-timing-function: ease-out;
+  }
+  85% {
+    transform: translateY(-5px);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+
+.tier {
+    width: 200px;
+    height: 60px;
+    background: #50331a;
+    border-radius: 10px 10px 0 0;
+    position: relative;
+    margin-bottom: 5px;
+}
+
+.tier-bottom {
+    width: 200px;
+    height: 60px;
+    background: #50331a;
+    border-radius: 10px 10px 0 0;
+    position: relative;
+    margin-bottom: 5px;
+}
+
+.tier-middle {
+    width: 150px;
+    height: 60px;
+    background: #895735;
+    border-radius: 10px 10px 0 0;
+    position: relative;
+    margin-bottom: 5px;
+}
+
+.tier-top {
+    width: 100px;
+    height: 60px;
+    background: #bf905d;
+    border-radius: 10px 10px 0 0;
+    position: relative;
+    margin-bottom: 5px;
+}
+.cream {
+    position: absolute;
+    top: -10px;
+    left: 0;
+    width: 100%;
+    height: 25px;
+    background-color: #d7bf9a;
+    border-radius: 50% 50% 0 0;
+    z-index: 1;
+    background: radial-gradient(circle at 10px 10px, #f9e4cf, #fbe3c4);
+    box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+    animation: wobble 2s ease-in-out infinite;
+}
+
+/* @keyframes wobble {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-2px); }
+} */
+
+.sprinkles {
+    position: absolute;
+    top: 5px;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+}
+
+.sprinkle {
+    position: absolute;
+    width: 6px;
+    height: 2px;
+    border-radius: 2px;
+    transform: rotate(var(--angle, 0deg));
+    background-color: var(--color, red);
+    top: var(--top, 0%);
+    left: var(--left, 0%);
+    animation: sprinkle-jitter 3s infinite ease-in-out;
+}
+
+@keyframes sprinkle-jitter {
+    0%, 100% { transform: rotate(var(--angle)) translateY(0); }
+    50% { transform: rotate(var(--angle)) translateY(-1px); }
+}
+
+.flame {
+    position: absolute;
+    top: -30px;
+    left: -5px;
+    width: 20px;
+    height: 40px;
+    pointer-events: none;
+    animation: fall-candle 0.6s ease forwards;
+    animation-delay: 1.3s;
+}
+
+.flame-core,
+.flame-mid,
+.flame-glow {
+    position: absolute;
+    border-radius: 50%;
+    animation: flicker 0.2s infinite;
+}
+
+.flame-core {
+    width: 8px;
+    height: 15px;
+    background: orange;
+    top: 10px;
+    left: 6px;
+    z-index: 3;
+}
+
+.flame-mid {
+    width: 14px;
+    height: 25px;
+    background: rgba(255, 165, 0, 0.7);
+    top: 5px;
+    left: 3px;
+    z-index: 2;
+}
+
+.flame-glow {
+    width: 90px;
+    height: 115px;
+    background: radial-gradient(circle at center, 
+        rgba(255, 200, 50, 0.6) 0%,
+        rgba(255, 140, 0, 0.3) 60%,
+        rgba(255, 69, 0, 0) 90%
+    );
+    filter: blur(8px);
+    top: -40px;
+    left: -35px;
+    z-index: 0;
+    animation: flicker-glow 1.5s infinite alternate ease-in-out;
+}
+
+.flame.off .flame-core,
+.flame.off .flame-mid,
+.flame.off .flame-glow {
+    animation: none !important;
+    opacity: 0;
+}
+
+
+@keyframes flicker-glow {
+    0% {
+        transform: scale(1);
+        opacity: 0.6;
+        filter: blur(6px);
+    }
+    50% {
+        transform: scale(1.1);
+        opacity: 0.8;
+        filter: blur(9px);
+    }
+    100% {
+        transform: scale(1);
+        opacity: 0.6;
+        filter: blur(6px);
+    }
+}
+
+@keyframes fall-candle {
+  0% {
+    transform: translateY(-100px);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+button {
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    background-color: rgba(180, 178, 178, 0.233);
+    color: white;
+    border-radius: 25px;
+    margin-bottom: 90px;
+}
+
+.shadow {
+    position: absolute;
+    bottom: 110px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 240px;
+    height: 25px;
+    background: radial-gradient(
+        ellipse at center,
+        rgba(0,0,0,0.4) 0%,
+        rgba(0,0,0,0) 80%
+    );
+    border-radius: 50%;
+    z-index: 0;
+}
+
+.table {
+    width: 450px;
+    height: 30px;
+    background: linear-gradient(to bottom, #8B4513, #A0522D);
+    border-radius: 10px 10px 0 0;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
+    position: relative;
+    margin-top: -30px;
+    z-index: -1;
+    margin-bottom: 100px;
+}
+
+.table::after {
+    content: '';
+    position: absolute;
+    bottom: -14px;
+    left: 0;
+    width: 100%;
+    height: 14px;
+    background: #5c3317;
+    border-radius: 0 0 10px 10px;
+    box-shadow: inset 0 2px 5px rgba(0, 0, 0, 0.3);
+}
+
+.table-leg {
+    position: absolute;
+    width: 14px;
+    height: 50px;
+    background: #5c3317;
+    border-radius: 3px;
+    bottom: -60px;
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.4);
+}
+
+.table-leg.left {
+    left: 20px;
+}
+
+.table-leg.right {
+    right: 20px;
+}
+
+.smoke {
+  position: absolute;
+  top: -40px;
+  left: 50%;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(200,200,200,0.5) 0%, rgba(100,100,100,0.2) 100%);
+  opacity: 0;
+  transform: translateX(-50%) scale(1);
+  animation: smoke-rise 2s ease-out forwards;
+  pointer-events: none;
+  z-index: 1;
+  display: none;
+}
+
+@keyframes smoke-rise {
+  0% {
+    transform: translateX(-50%) translateY(0px) scale(1);
+    opacity: 0.6;
+  }
+  50% {
+    transform: translateX(-50%) translateY(-30px) scale(1.5);
+    opacity: 0.4;
+  }
+  100% {
+    transform: translateX(-50%) translateY(-60px) scale(2);
+    opacity: 0;
+  }
+}
+
+#flipbook {
+    width: 700px;
+    height: 500px;
+    margin: 30px auto;
+}
+
+#flipbook .hard {
+  background: #845600;
+  color: white;
+  font-weight: bold;
+  font-size: 24px;
+  line-height: 300px;
+  text-align: center;
+}
+
+#flipbook > div {
+  background: #f0f0f0;
+  font-size: 22px;
+  text-align: center;
+  line-height: 300px;
+  border: 1px solid #ffffff;
+}
+
+#flipbook > div img {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+  display: block;
+  margin: 0 auto;
+}
+
+.buku{
+    background-color: white;
+    border-radius: 50px 50px 0px 0px;
+    width: 100%;
+}

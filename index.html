@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Happy Birthday</title>
+    <link rel="stylesheet" href="style.css"/>
+</head>
+<body>
+
+<h1 style="text-align: center;">Happy Birthday Apis</h1>
+<canvas id="birthday"></canvas>
+    
+<div class="content">   
+    <div class="cake-wrapper">
+        <div class="cake">
+            <div class="tier tier-top">
+                <div class="cream">
+                    <div class="sprinkles">
+                        <span class="sprinkle" style="--top: 15%; --left: 20%; --color: red; --angle: 45deg;"></span>
+                        <span class="sprinkle" style="--top: 35%; --left: 70%; --color: yellow; --angle: -20deg;"></span>
+                        <span class="sprinkle" style="--top: 50%; --left: 40%; --color: cyan; --angle: 30deg;"></span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="tier tier-middle">
+                <div class="cream">
+                <div class="sprinkles">
+                    <span class="sprinkle" style="--top: 25%; --left: 15%; --color: lime; --angle: 60deg;"></span>
+                    <span class="sprinkle" style="--top: 45%; --left: 50%; --color: blue; --angle: -35deg;"></span>
+                    <span class="sprinkle" style="--top: 60%; --left: 80%; --color: purple; --angle: 10deg;"></span>
+                    <span class="sprinkle" style="--top: 35%; --left: 30%; --color: hotpink; --angle: 90deg;"></span>
+                </div>
+                </div>
+            </div>
+
+            <div class="tier tier-bottom">
+                <div class="cream">
+                <div class="sprinkles">
+                    <span class="sprinkle" style="--top: 20%; --left: 10%; --color: red; --angle: 45deg;"></span>
+                    <span class="sprinkle" style="--top: 40%; --left: 30%; --color: yellow; --angle: -20deg;"></span>
+                    <span class="sprinkle" style="--top: 60%; --left: 70%; --color: cyan; --angle: 30deg;"></span>
+                    <span class="sprinkle" style="--top: 25%; --left: 60%; --color: green; --angle: 90deg;"></span>
+                    <span class="sprinkle" style="--top: 50%; --left: 80%; --color: pink; --angle: -45deg;"></span>
+                </div>
+                </div>
+            </div>
+        </div>
+            
+            <div class="candle">
+                <div class="flame" id="flame">
+                    <div class="flame-core"></div>
+                    <div class="flame-mid"></div>
+                    <div class="flame-glow"></div>
+                </div>
+            </div>
+
+            <div class="smoke" id="smoke"></div>
+
+    </div>
+
+    <div class="shadow"></div>
+        
+    <div class="table">
+        <div class="table-leg left"></div>
+        <div class="table-leg right"></div>
+    </div>
+</div>
+
+    <button onclick="startListening()">Tiup Lilin 🎤</button>
+
+<div class="buku">
+    <div id="flipbook">
+        <div class="hard" style="font-size: 40px; font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;"> Apis</div>
+        <div class="hard"></div>
+        <div><img src="assets/1.jpg"></div>
+        <div><img src="assets/2.jpg"></div>
+        <div><img src="assets/3.jpg"></div>
+        <div><img src="assets/4.jpg"></div>
+        <div><img src="assets/5.jpg"></div>
+        <div><img src="assets/6.jpg"></div>
+        <div><img src="assets/7.jpg"></div>
+        <div><img src="assets/8.jpg"></div>
+        <div class="hard"></div>
+        <div class="hard">selamat ultah, panjang umur, sehat selalu</div>
+    </div>
+</div>
+    <audio id="birthday-audio" src="happy-birthday.mp3"></audio>
+
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="turn.js-master/turn.min.js"></script>
+    <script src="turn.js-master/turn.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
